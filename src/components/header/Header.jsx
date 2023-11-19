@@ -1,14 +1,19 @@
-import { months } from '../../utils/dateUtils.js';
 import React from 'react';
 import './header.scss';
-const Header = ({ switchNextWeek, switchPrevWeek, currentWeek, weekDates }) => {
+const Header = ({
+  switchNextWeek,
+  switchPrevWeek,
+  currentWeek,
+  weekDates,
+  openModalWindow,
+}) => {
   const weekDatesMonth = weekDates.map((el) =>
     el.toLocaleString('en', { month: 'short' })
   );
   const month = [...new Set(weekDatesMonth)];
   return (
     <header className="header">
-      <button className="button create-event-btn">
+      <button className="button create-event-btn" onClick={openModalWindow}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">

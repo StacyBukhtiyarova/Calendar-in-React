@@ -4,11 +4,20 @@ import './modal.scss';
 
 class Modal extends Component {
   render() {
+    const { openModalWindow, hideModalWindow, children, createEvent } =
+      this.props;
+    if (openModalWindow) {
+      return null;
+    }
     return (
       <div className="modal overlay">
         <div className="modal__content">
           <div className="create-event">
-            <button className="create-event__close-btn">+</button>
+            <button
+              className="create-event__close-btn"
+              onClick={hideModalWindow}>
+              +
+            </button>
             <form className="event-form">
               <input
                 type="text"
@@ -34,13 +43,16 @@ class Modal extends Component {
               <textarea
                 name="description"
                 placeholder="Description"
-                className="event-form__field"
-              ></textarea>
-              <button type="submit" className="event-form__submit-btn">
+                className="event-form__field"></textarea>
+              <button
+                type="submit"
+                className="event-form__submit-btn"
+                onClick={createEvent}>
                 Create
               </button>
             </form>
           </div>
+          <div>{children}</div>
         </div>
       </div>
     );

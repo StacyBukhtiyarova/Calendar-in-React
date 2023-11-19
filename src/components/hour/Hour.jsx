@@ -9,7 +9,6 @@ const Hour = ({ dataHour, hourEvents }) => {
       dateFrom.getMinutes()
     )}`;
     const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
-    console.log(hourEvents);
     return (
       <Event
         key={id}
