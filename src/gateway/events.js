@@ -8,10 +8,10 @@ const events = [
   // },
   {
     id: 0,
-    title: 'Go to the school',
-    description: 'hello, 2 am',
-    dateFrom: new Date(2023, 10, 16, 10, 15),
-    dateTo: new Date(2023, 10, 16, 11, 0),
+    title: 'Make dinner',
+    description: "hello, it's time to make dinner",
+    dateFrom: new Date(2023, 10, 21, 18, 15),
+    dateTo: new Date(2023, 10, 21, 19, 0),
   },
   // {
   //   id: 2,
@@ -22,7 +22,7 @@ const events = [
   // },
   {
     id: 1,
-    title: 'Lunch',
+    title: '',
     description: '',
     dateFrom: new Date(2020, 8, 17, 10, 30),
     dateTo: new Date(2020, 8, 17, 11, 30),
@@ -36,10 +36,10 @@ const events = [
   // },
   {
     id: 2,
-    title: 'Meet friend',
-    description: 'at the cafe',
-    dateFrom: new Date(2023, 10, 18, 10, 30),
-    dateTo: new Date(2023, 10, 18, 11, 0),
+    title: 'Workout',
+    description: 'HIIT workout',
+    dateFrom: new Date(2023, 10, 21, 15, 30),
+    dateTo: new Date(2023, 10, 21, 16, 0),
   },
 ];
 

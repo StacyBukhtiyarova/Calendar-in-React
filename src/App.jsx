@@ -4,6 +4,9 @@ import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 import './common.scss';
+
+import moment from 'moment';
+
 import events from './gateway/events.js';
 class App extends Component {
   state = {
@@ -45,15 +48,25 @@ class App extends Component {
   };
   createEvent = (event) => {
     event.preventDefault();
+    const newEvent = {};
     const title = document.querySelector('input[name="title"]');
     const description = document.querySelector('textarea[name="description"]');
-    const dateFrom = document.querySelector("input[name='date']");
+    const dateFrom = document.querySelector('input[name="date"]');
+    const dateTo = document.querySelector('input[name="date"]');
     newEvent.id = this.state.events.length;
     newEvent.title = title.value;
     newEvent.description = description.value;
-    //newEvent.dateFrom = new Date(dateFrom)
-    events.push(newEvent);
-    console.log(this.state.events);
+    const startTime = document.querySelector("input[name='startTime']");
+    const endTime = document.querySelector("input[name='endTime']");
+    newEvent.dateFrom =
+      moment(dateFrom.value).format('ddd MMM D yyyy ') + startTime.value;
+
+    newEvent.dateTo =
+      moment(dateTo.value).format('ddd MMM D yyyy ') + endTime.value;
+
+    const res = events.push(newEvent);
+
+     console.log(this.state.events);
   };
   render() {
     //const { weekStartDate } = this.state;
