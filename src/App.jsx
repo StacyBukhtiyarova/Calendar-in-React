@@ -1,95 +1,107 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
-import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
+import {
+  getWeekStartDate,
+  generateWeekRange,
+  days,
+} from '../src/utils/dateUtils.js';
 import './common.scss';
+import events, { fetchEvents, onCreateTask } from './gateway/events';
 
-import moment from 'moment';
+const App = () => {
+  const [displayedEvents, setEvents] = useState([...events]);
+  const [weekDates, setWeekDates] = useState(
+    generateWeekRange(getWeekStartDate(new Date()))
+  );
+  const [openModalWindow, setOpenModalWindow] = useState(false);
 
-import events from './gateway/events.js';
-class App extends Component {
-  state = {
-    weekDates: generateWeekRange(getWeekStartDate(new Date())),
-    openModalWindow: false,
-    events,
-  };
-  switchNextWeek = () => {
-    const newWeeks = this.state.weekDates.map((day) => {
+  const switchNextWeek = () => {
+    const newWeeks = weekDates.map((day) => {
       return new Date(new Date(day).getTime() + 604800000);
     });
-    this.setState({
-      weekDates: newWeeks,
-    });
+    setWeekDates(newWeeks);
   };
-  switchPrevWeek = () => {
-    const newWeeks = this.state.weekDates.map((day) => {
+  const switchPrevWeek = () => {
+    const newWeeks = weekDates.map((day) => {
       return new Date(new Date(day).getTime() - 604800000);
     });
-    this.setState({
-      weekDates: newWeeks,
-    });
+    setWeekDates(newWeeks);
   };
-  currentWeek = () => {
+  const currentWeek = () => {
     const currentWeekDates = generateWeekRange(getWeekStartDate(new Date()));
-    this.setState({
-      weekDates: currentWeekDates,
-    });
+    setWeekDates(currentWeekDates);
   };
-  hideModalWindow = () => {
-    this.setState({
-      openModalWindow: !this.state.openModalWindow,
-    });
+  const hideModalWindow = () => {
+    setOpenModalWindow(!openModalWindow);
   };
-  showModalWindow = () => {
-    this.setState({
-      openModalWindow: !this.state.openModalWindow,
-    });
+  const showModalWindow = () => {
+    setOpenModalWindow(!openModalWindow);
   };
-  createEvent = (event) => {
-    event.preventDefault();
-    const newEvent = {};
-    const title = document.querySelector('input[name="title"]');
-    const description = document.querySelector('textarea[name="description"]');
-    const dateFrom = document.querySelector('input[name="date"]');
-    const dateTo = document.querySelector('input[name="date"]');
-    newEvent.id = this.state.events.length;
-    newEvent.title = title.value;
-    newEvent.description = description.value;
-    const startTime = document.querySelector("input[name='startTime']");
-    const endTime = document.querySelector("input[name='endTime']");
-    newEvent.dateFrom =
-      moment(dateFrom.value).format('ddd MMM D yyyy ') + startTime.value;
 
-    newEvent.dateTo =
-      moment(dateTo.value).format('ddd MMM D yyyy ') + endTime.value;
+  const createEvent = (e) => {
+    e.preventDefault();
+    const formData = new FormData(document.querySelector('form'));
+    const newEvent = {
+      id: Math.floor(Math.random() * 1000) + 1,
+      title: formData.get('title'),
+      description: formData.get('description'),
+      dateFrom: new Date(
+        formData.get('date') + 'T' + formData.get('startTime')
+      ),
+      dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
+    };
+    onCreateTask(newEvent);
+    hideModalWindow();
+    setEvents(displayedEvents.concat(newEvent));
 
-    const res = events.push(newEvent);
-
-     console.log(this.state.events);
+    // onCreateTask(displayedEvents)
+    //   .then(() => {
+    //     fetchEvents()
+    //       .then((data) => {
+    //         setEvents(data);
+    //       })
+    //       .catch((error) => {
+    //         console.error('Ошибка при получении событий:', error);
+    //       });
+    //   })
+    //   .catch((error) => {
+    //     console.error('Ошибка при получении событий:', error);
+    //   });
+    // hideModalWindow(false);
   };
-  render() {
-    //const { weekStartDate } = this.state;
-    // const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
-    const { openModalWindow, weekDates } = this.state;
+  console.log(displayedEvents);
 
-    return (
-      <>
-        <Header
-          openModalWindow={this.showModalWindow}
-          weekDates={weekDates}
-          switchNextWeek={this.switchNextWeek}
-          switchPrevWeek={this.switchPrevWeek}
-          currentWeek={this.currentWeek}
-        />
-        <Modal
-          createEvent={this.createEvent}
-          openModalWindow={!openModalWindow}
-          hideModalWindow={this.hideModalWindow}
-        />
-        <Calendar weekDates={weekDates} />
-      </>
-    );
-  }
-}
+  useEffect(() => {
+    fetchEvents()
+      .then((data) => {
+        setEvents(data);
+      })
+      .catch((error) => {
+        console.error('Ошибка при получении событий:', error);
+      });
+  }, []);
+  return (
+    <>
+      <Header
+        openModalWindow={showModalWindow}
+        weekDates={weekDates}
+        switchNextWeek={switchNextWeek}
+        switchPrevWeek={switchPrevWeek}
+        currentWeek={currentWeek}
+      />
+      <Modal
+        createEvent={createEvent}
+        openModalWindow={!openModalWindow}
+        hideModalWindow={hideModalWindow}
+      />
+      <Calendar
+        weekDates={weekDates}
+        createEvent={createEvent}
+        events={events}
+      />
+    </>
+  );
+};
 export default App;

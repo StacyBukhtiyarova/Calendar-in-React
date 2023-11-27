@@ -9,6 +9,7 @@ const Hour = ({ dataHour, hourEvents }) => {
       dateFrom.getMinutes()
     )}`;
     const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
+    const timeSlot = new Date(dateFrom).getHours();
     return (
       <Event
         key={id}
@@ -17,9 +18,11 @@ const Hour = ({ dataHour, hourEvents }) => {
         marginTop={dateFrom.getMinutes()}
         time={`${eventStart} - ${eventEnd}`}
         title={title}
+        timeSlot={timeSlot}
       />
     );
   });
+
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}

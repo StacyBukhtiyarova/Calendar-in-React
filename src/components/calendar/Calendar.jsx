@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
@@ -7,27 +7,18 @@ import events from '../../gateway/events';
 
 import './calendar.scss';
 
-class Calendar extends Component {
-  state = {
-    events,
-  };
-
-  render() {
-    console.log(this.props.events);
-    //console.log(this.state.events);
-    const { weekDates } = this.props;
-    return (
-      <section className="calendar">
-        <Navigation weekDates={weekDates} />
-        <div className="calendar__body">
-          <div className="calendar__week-container">
-            <Sidebar />
-            <Week weekDates={weekDates} events={events} />
-          </div>
+const Calendar = ({ weekDates, events, displayedEvents }) => {
+  return (
+    <section className="calendar">
+      <Navigation weekDates={weekDates} />
+      <div className="calendar__body">
+        <div className="calendar__week-container">
+          <Sidebar />
+          <Week weekDates={weekDates} events={events} />
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+};
 
 export default Calendar;
