@@ -3,11 +3,8 @@ import React, { useState, useEffect, Component } from 'react';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
-import events from '../../gateway/events';
-
 import './calendar.scss';
-
-const Calendar = ({ weekDates, events, displayedEvents }) => {
+const Calendar = ({ weekDates, events }) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />

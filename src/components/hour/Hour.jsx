@@ -9,7 +9,6 @@ const Hour = ({ dataHour, hourEvents }) => {
       dateFrom.getMinutes()
     )}`;
     const eventEnd = `${dateTo.getHours()}:${formatMins(dateTo.getMinutes())}`;
-    const timeSlot = new Date(dateFrom).getHours();
     return (
       <Event
         key={id}
@@ -18,7 +17,6 @@ const Hour = ({ dataHour, hourEvents }) => {
         marginTop={dateFrom.getMinutes()}
         time={`${eventStart} - ${eventEnd}`}
         title={title}
-        timeSlot={timeSlot}
       />
     );
   });

@@ -11,7 +11,7 @@ import './common.scss';
 import events, { fetchEvents, onCreateTask } from './gateway/events';
 
 const App = () => {
-  const [displayedEvents, setEvents] = useState([...events]);
+  const [events, setEvents] = useState([]);
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(new Date()))
   );
@@ -39,7 +39,6 @@ const App = () => {
   const showModalWindow = () => {
     setOpenModalWindow(!openModalWindow);
   };
-
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
@@ -52,27 +51,11 @@ const App = () => {
       ),
       dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
     };
+    setOpenModalWindow(false);
+    setEvents(newEvent);
     onCreateTask(newEvent);
-    hideModalWindow();
-    setEvents(displayedEvents.concat(newEvent));
-
-    // onCreateTask(displayedEvents)
-    //   .then(() => {
-    //     fetchEvents()
-    //       .then((data) => {
-    //         setEvents(data);
-    //       })
-    //       .catch((error) => {
-    //         console.error('Ошибка при получении событий:', error);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.error('Ошибка при получении событий:', error);
-    //   });
-    // hideModalWindow(false);
   };
-  console.log(displayedEvents);
-
+  console.log(events);
   useEffect(() => {
     fetchEvents()
       .then((data) => {

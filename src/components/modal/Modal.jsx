@@ -3,7 +3,7 @@ import events from '../../gateway/events';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
 
-const Modal = ({ openModalWindow, hideModalWindow, children,createEvent }) => {
+const Modal = ({ openModalWindow, hideModalWindow, children, createEvent }) => {
   if (openModalWindow) {
     return null;
   }
@@ -21,7 +21,6 @@ const Modal = ({ openModalWindow, hideModalWindow, children,createEvent }) => {
       [name]: value,
     }));
   };
-
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -68,6 +67,7 @@ const Modal = ({ openModalWindow, hideModalWindow, children,createEvent }) => {
               className="event-form__field"
               value={eventData.description}
               onChange={handleChange}></textarea>
+
             <button
               type="submit"
               className="event-form__submit-btn"
