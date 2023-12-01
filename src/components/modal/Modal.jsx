@@ -7,20 +7,7 @@ const Modal = ({ openModalWindow, hideModalWindow, children, createEvent }) => {
   if (openModalWindow) {
     return null;
   }
-  const [eventData, setEventData] = useState({
-    title: '',
-    date: '',
-    startTime: '',
-    endTime: '',
-    description: '',
-  });
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setEventData((prevEventData) => ({
-      ...prevEventData,
-      [name]: value,
-    }));
-  };
+
   return (
     <div className="modal overlay">
       <div className="modal__content">
@@ -34,39 +21,22 @@ const Modal = ({ openModalWindow, hideModalWindow, children, createEvent }) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
-              value={eventData.title}
-              onChange={handleChange}
             />
             <div className="event-form__time">
-              <input
-                type="date"
-                name="date"
-                className="event-form__field"
-                value={eventData.date}
-                onChange={handleChange}
-              />
+              <input type="date" name="date" className="event-form__field" />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={eventData.startTime}
-                onChange={handleChange}
               />
               <span>-</span>
-              <input
-                type="time"
-                name="endTime"
-                className="event-form__field"
-                value={eventData.endTime}
-                onChange={handleChange}
-              />
+              <input type="time" name="endTime" className="event-form__field" />
             </div>
             <textarea
               name="description"
               placeholder="Description"
               className="event-form__field"
-              value={eventData.description}
-              onChange={handleChange}></textarea>
+            />
 
             <button
               type="submit"

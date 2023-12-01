@@ -1,12 +1,8 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
-import {
-  getWeekStartDate,
-  generateWeekRange,
-  days,
-} from '../src/utils/dateUtils.js';
+import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 import './common.scss';
 import events, { fetchEvents, onCreateTask } from './gateway/events';
 
@@ -51,11 +47,13 @@ const App = () => {
       ),
       dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
     };
+    console.log(events.concat(newEvent));
     setOpenModalWindow(false);
-    setEvents(newEvent);
     onCreateTask(newEvent);
+    setEvents([newEvent, ...events]);
+    fetchEvents();
   };
-  console.log(events);
+
   useEffect(() => {
     fetchEvents()
       .then((data) => {
