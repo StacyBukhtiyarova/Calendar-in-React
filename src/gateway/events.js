@@ -1,4 +1,5 @@
-const baseUrl = 'https://649333cf428c3d2035d17deb.mockapi.io/api/v1/events';
+export const baseUrl =
+  'https://649333cf428c3d2035d17deb.mockapi.io/api/v1/events';
 const events = [
   // {
   //   id: 1,
@@ -73,4 +74,9 @@ export const onCreateTask = (taskInfo) =>
       alert("Network Error! Can't create event.");
       return;
     });
+export const onDeleteTask = (id) =>
+  fetch(`${baseUrl}/${id}`, {
+    method: 'DELETE',
+  });
+
 export default events;

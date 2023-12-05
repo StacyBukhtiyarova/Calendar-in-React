@@ -12,7 +12,6 @@ const App = () => {
     generateWeekRange(getWeekStartDate(new Date()))
   );
   const [openModalWindow, setOpenModalWindow] = useState(false);
-
   const switchNextWeek = () => {
     const newWeeks = weekDates.map((day) => {
       return new Date(new Date(day).getTime() + 604800000);
@@ -35,24 +34,6 @@ const App = () => {
   const showModalWindow = () => {
     setOpenModalWindow(!openModalWindow);
   };
-  const createEvent = (e) => {
-    e.preventDefault();
-    const formData = new FormData(document.querySelector('form'));
-    const newEvent = {
-      id: Math.floor(Math.random() * 1000) + 1,
-      title: formData.get('title'),
-      description: formData.get('description'),
-      dateFrom: new Date(
-        formData.get('date') + 'T' + formData.get('startTime')
-      ),
-      dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
-    };
-    console.log(events.concat(newEvent));
-    setOpenModalWindow(false);
-    onCreateTask(newEvent);
-    setEvents([newEvent, ...events]);
-    fetchEvents();
-  };
 
   useEffect(() => {
     fetchEvents()
@@ -63,6 +44,24 @@ const App = () => {
         console.error('Ошибка при получении событий:', error);
       });
   }, []);
+  const createEvent = (data) => {
+    onCreateTask(data)
+      .then(() => {
+        fetchEvents()
+          .then((data) => {
+            setEvents(data);
+          })
+          .catch((error) => {
+            console.error('Ошибка при получении событий:', error);
+          });
+      })
+      .catch((error) => {
+        console.error('Ошибка при получении событий:', error);
+      });
+    setOpenModalWindow(false);
+    fetchEvents();
+    setEvents((data) => data);
+  };
   return (
     <>
       <Header
