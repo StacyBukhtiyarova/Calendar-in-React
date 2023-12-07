@@ -1,6 +1,6 @@
 import React from 'react';
 import Hour from '../hour/Hour';
-
+import { fetchEvents } from '../../gateway/events';
 import './day.scss';
 
 const Day = ({ dataDay, dayEvents }) => {

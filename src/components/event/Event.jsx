@@ -4,7 +4,7 @@ import { fetchEvents, onDeleteTask } from '../../gateway/events';
 const Event = (events) => {
   const [deleteEvent, setDeleteEvent] = useState(false);
   const onDeleteEvent = () => {
-    onDeleteTask(events.id).then(fetchEvents());
+    onDeleteTask(events.id);
     setDeleteEvent(false);
   };
   return (
