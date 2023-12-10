@@ -3,13 +3,9 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
+import Event from './components/event/Event.jsx';
 import './common.scss';
-import {
-  fetchEvents,
-  onCreateTask,
-  onDeleteTask,
-  baseUrl,
-} from './gateway/events';
+import { fetchEvents } from './gateway/events';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -39,37 +35,16 @@ const App = () => {
   const showModalWindow = () => {
     setModalWindow(!openModalWindow);
   };
-
+ 
   useEffect(() => {
-    const res = (id) =>
-      fetch(`${baseUrl}/${id}`)
-        .then((data) => data.json())
-        .then((data) => setEvents(data));
-    res(events);
-  }, [events]);
-  const createEvent = (data) => {
-    onCreateTask(data)
-      .then(() => {
-        fetchEvents()
-          .then((data) => {
-            setEvents(data);
-          })
-          .catch((error) => {
-            console.error('Ошибка при получении событий:', error);
-          });
+    fetchEvents()
+      .then((data) => {
+        setEvents(data);
       })
       .catch((error) => {
         console.error('Ошибка при получении событий:', error);
       });
-    setModalWindow(false);
-  };
-
-  const onDeleteEvent = (data) => {
-    onDeleteTask(data)
-      .then(() => fetchEvents())
-      .then((data) => setEvents(data));
-    setModalWindow(false);
-  };
+  }, []);
 
   return (
     <>
@@ -81,12 +56,12 @@ const App = () => {
         currentWeek={currentWeek}
       />
       <Modal
-        delete={onDeleteEvent}
-        createEvent={createEvent}
+        events={events}
+        setEvents={setEvents}
         openModalWindow={!openModalWindow}
         hideModalWindow={hideModalWindow}
       />
-      <Calendar weekDates={weekDates} events={events} delete={onDeleteEvent} />
+      <Calendar weekDates={weekDates} events={events} />
     </>
   );
 };

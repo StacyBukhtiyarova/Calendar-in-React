@@ -3,26 +3,25 @@ import events, { fetchEvents } from '../../gateway/events';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
 
-const Modal = ({ openModalWindow, hideModalWindow, children }) => {
+const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
   }
-  const [events, setEvents] = useState({
-    title: '',
-    date: '',
-    startTime: '',
-    endTime: '',
-    description: '',
-  });
+  // const [events, setEvents] = useState({
+  //   title: '',
+  //   date: '',
+  //   startTime: '',
+  //   endTime: '',
+  //   description: '',
+  // });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setEvents((prevEventData) => ({
-      ...prevEventData,
-      [name]: value,
-    }));
-  };
-
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setEvents((prevEventData) => ({
+  //     ...prevEventData,
+  //     [name]: value,
+  //   }));
+  // };
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
@@ -36,9 +35,7 @@ const Modal = ({ openModalWindow, hideModalWindow, children }) => {
       dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
     };
     hideModalWindow();
-    onCreateTask(newEvent);
-    //fetchEvents();
-  //  setEvents(events.concat(newEvent));
+    onCreateTask(newEvent).then(() => setEvents(events.concat(newEvent)));
   };
   return (
     <div className="modal overlay">
@@ -53,45 +50,45 @@ const Modal = ({ openModalWindow, hideModalWindow, children }) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
-              value={events.title}
-              onChange={handleChange}
+              //  value={events.title}
+              //onChange={handleChange}
             />
             <div className="event-form__time">
               <input
                 type="date"
                 name="date"
                 className="event-form__field"
-                value={events.date}
-                onChange={handleChange}
+                // value={events.date}
+                //onChange={handleChange}
               />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={events.startTime}
-                onChange={handleChange}
+                // value={events.startTime}
+                // onChange={handleChange}
               />
               <span>-</span>
               <input
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                value={events.endTime}
-                onChange={handleChange}
+                // value={events.endTime}
+                // onChange={handleChange}
               />
             </div>
             <textarea
               name="description"
               placeholder="Description"
               className="event-form__field"
-              value={events.description}
-              onChange={handleChange}></textarea>
+              //value={events.description}
+              //</form>onChange={handleChange}
+            ></textarea>
             <button type="submit" className="event-form__submit-btn">
               Create
             </button>
           </form>
         </div>
-        <div>{children}</div>
       </div>
     </div>
   );

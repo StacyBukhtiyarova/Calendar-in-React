@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
 const Event = (events) => {
-  const [deleteEvent, setDeleteEvent] = useState(false);
+  const [openDeleteEvent, setDeleteEvent] = useState(false);
   const onDeleteEvent = () => {
     onDeleteTask(events.id);
     setDeleteEvent(false);
   };
+  // if (openDeleteEvent) {
+  //   return null;
+  // }
   return (
     <>
       <div onClick={() => setDeleteEvent(true)}>{events.title}</div>
       <div>
-        {deleteEvent && (
+        {openDeleteEvent && (
           <div className="modal overlay">
             <div className="modal__content">
-              {deleteEvent && (
+              {openDeleteEvent && (
                 <div className="event-modal">
                   <button
-                    onClick={() => setDeleteEvent(!deleteEvent)}
+                    onClick={() => setDeleteEvent(false)}
                     className="delete-event__close-btn">
                     +
                   </button>
@@ -39,5 +42,4 @@ const Event = (events) => {
     </>
   );
 };
-
 export default Event;
