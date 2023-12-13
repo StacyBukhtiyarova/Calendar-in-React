@@ -5,10 +5,19 @@ import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from '../src/utils/dateUtils.js';
 import Event from './components/event/Event.jsx';
 import './common.scss';
-import { fetchEvents } from './gateway/events';
+import { fetchEvents, onDeleteTask } from './gateway/events';
 
 const App = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([
+    {
+      title: '',
+      date: '',
+      startTime: '',
+      endTime: '',
+      description: '',
+    },
+  ]);
+
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(new Date()))
   );
@@ -35,7 +44,7 @@ const App = () => {
   const showModalWindow = () => {
     setModalWindow(!openModalWindow);
   };
- 
+
   useEffect(() => {
     fetchEvents()
       .then((data) => {
@@ -45,7 +54,10 @@ const App = () => {
         console.error('Ошибка при получении событий:', error);
       });
   }, []);
-
+  const handleDelete = () => {
+    onDeleteTask(events.id);
+    setEvents(events);
+  };
   return (
     <>
       <Header
@@ -61,7 +73,11 @@ const App = () => {
         openModalWindow={!openModalWindow}
         hideModalWindow={hideModalWindow}
       />
-      <Calendar weekDates={weekDates} events={events} />
+      <Calendar
+        weekDates={weekDates}
+        events={events}
+        handleDelete={handleDelete}
+      />
     </>
   );
 };

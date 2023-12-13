@@ -7,13 +7,6 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
   }
-  // const [events, setEvents] = useState({
-  //   title: '',
-  //   date: '',
-  //   startTime: '',
-  //   endTime: '',
-  //   description: '',
-  // });
 
   // const handleChange = (event) => {
   //   const { name, value } = event.target;
@@ -50,8 +43,8 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
               name="title"
               placeholder="Title"
               className="event-form__field"
-              //  value={events.title}
-              //onChange={handleChange}
+              // value={events.title}
+              // onChange={handleChange}
             />
             <div className="event-form__time">
               <input
@@ -59,7 +52,7 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
                 name="date"
                 className="event-form__field"
                 // value={events.date}
-                //onChange={handleChange}
+                // onChange={handleChange}
               />
               <input
                 type="time"
@@ -73,7 +66,7 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                // value={events.endTime}
+                //value={events.endTime}
                 // onChange={handleChange}
               />
             </div>
@@ -81,8 +74,8 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
               name="description"
               placeholder="Description"
               className="event-form__field"
-              //value={events.description}
-              //</form>onChange={handleChange}
+              //  value={events.description}
+              //</form> onChange={handleChange}
             ></textarea>
             <button type="submit" className="event-form__submit-btn">
               Create

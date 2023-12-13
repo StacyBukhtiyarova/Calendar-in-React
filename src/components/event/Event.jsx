@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
-const Event = (events) => {
+const Event = (events, handleDelete) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
-  const onDeleteEvent = () => {
-    onDeleteTask(events.id);
-    setDeleteEvent(false);
-  };
-  // if (openDeleteEvent) {
-  //   return null;
-  // }
+
+  // const onDeleteEvent = () => {
+  //   handleDelete();
+  //   setDeleteEvent(false);
+  // };
+
   return (
     <>
       <div onClick={() => setDeleteEvent(true)}>{events.title}</div>
@@ -30,7 +29,7 @@ const Event = (events) => {
                   <button
                     type="submit"
                     className="event-modal__delete-btn"
-                    onClick={onDeleteEvent}>
+                    onClick={() => handleDelete()}>
                     Delete
                   </button>
                 </div>
