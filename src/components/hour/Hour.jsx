@@ -3,7 +3,7 @@ import { formatMins } from '../../../src/utils/dateUtils.js';
 import { onDeleteTask, fetchEvents } from '../../gateway/events';
 import React, { useState, useEffect } from 'react';
 
-const Hour = ({ dataHour, hourEvents, handleDelete }) => {
+const Hour = ({ dataHour, hourEvents }) => {
   const res = hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
     const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
       new Date(dateFrom).getMinutes()
@@ -14,7 +14,7 @@ const Hour = ({ dataHour, hourEvents, handleDelete }) => {
 
     return (
       <Event
-        onClick={handleDelete}
+        onClick={() => onDeleteTask(id)}
         key={id}
         //calculating event height = duration of event in minutes
         height={

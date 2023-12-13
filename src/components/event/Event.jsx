@@ -4,10 +4,10 @@ import { fetchEvents, onDeleteTask } from '../../gateway/events';
 const Event = (events, handleDelete) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
 
-  // const onDeleteEvent = () => {
-  //   handleDelete();
-  //   setDeleteEvent(false);
-  // };
+  const onDeleteEvent = () => {
+    onDeleteTask(events.id);
+    setDeleteEvent(false);
+  };
 
   return (
     <>
@@ -29,7 +29,7 @@ const Event = (events, handleDelete) => {
                   <button
                     type="submit"
                     className="event-modal__delete-btn"
-                    onClick={() => handleDelete()}>
+                    onClick={onDeleteEvent}>
                     Delete
                   </button>
                 </div>

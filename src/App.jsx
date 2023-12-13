@@ -54,10 +54,7 @@ const App = () => {
         console.error('Ошибка при получении событий:', error);
       });
   }, []);
-  const handleDelete = () => {
-    onDeleteTask(events.id);
-    setEvents(events);
-  };
+  
   return (
     <>
       <Header
@@ -76,7 +73,7 @@ const App = () => {
       <Calendar
         weekDates={weekDates}
         events={events}
-        handleDelete={handleDelete}
+       
       />
     </>
   );
