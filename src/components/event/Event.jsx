@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
-const Event = (events, setEvents) => {
+const Event = ({
+  id,
+  time,
+  title,
+  description,
+  setEvents,
+}) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
 
-   const onDeleteEvent = () => {
-     onDeleteTask(events.id).then(() =>
-       fetchEvents().then((data) => setEvents(data))
-     );
-     setDeleteEvent(false);
-   };
+  const onDeleteEvent = () => {
+    onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
+    setDeleteEvent(false);
+  };
 
   return (
     <>
-      <div onClick={() => setDeleteEvent(true)}>{events.title}</div>
+      <div onClick={() => setDeleteEvent(true)}>{title}</div>
       <div>
         {openDeleteEvent && (
           <div className="modal overlay">
@@ -25,9 +29,9 @@ const Event = (events, setEvents) => {
                     className="delete-event__close-btn">
                     +
                   </button>
-                  <span>{events.title}</span>
-                  <span>{events.time}</span>
-                  <span>{events.description}</span>
+                  <span>{title}</span>
+                  <span>{time}</span>
+                  <span>{description}</span>
                   <button
                     type="submit"
                     className="event-modal__delete-btn"
