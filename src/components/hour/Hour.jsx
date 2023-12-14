@@ -11,7 +11,6 @@ const Hour = ({ dataHour, hourEvents, setEvents }) => {
     const eventEnd = `${new Date(dateTo).getHours()}:${formatMins(
       new Date(dateTo).getMinutes()
     )}`;
-
     return (
       <Event
         setEvents={setEvents}

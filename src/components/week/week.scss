@@ -13,4 +13,7 @@
     display: flex;
     flex: 1;
   }
+  &__current-date {
+    background-color: red;
+  }
 }
