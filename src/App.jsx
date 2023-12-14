@@ -54,7 +54,7 @@ const App = () => {
         console.error('Ошибка при получении событий:', error);
       });
   }, []);
-  
+
   return (
     <>
       <Header
@@ -70,11 +70,7 @@ const App = () => {
         openModalWindow={!openModalWindow}
         hideModalWindow={hideModalWindow}
       />
-      <Calendar
-        weekDates={weekDates}
-        events={events}
-       
-      />
+      <Calendar weekDates={weekDates} events={events} setEvents={setEvents} />
     </>
   );
 };

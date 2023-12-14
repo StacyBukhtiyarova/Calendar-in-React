@@ -3,7 +3,7 @@ import Hour from '../hour/Hour';
 import { fetchEvents } from '../../gateway/events';
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents, handleDelete }) => {
+const Day = ({ dataDay, dayEvents, setEvents}) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -17,7 +17,7 @@ const Day = ({ dataDay, dayEvents, handleDelete }) => {
         );
 
         return (
-          <Hour key={dataDay + hour} dataHour={hour} hourEvents={hourEvents} handleDelete={handleDelete} />
+          <Hour key={dataDay + hour} dataHour={hour} hourEvents={hourEvents} setEvents={setEvents} />
         );
       })}
     </div>

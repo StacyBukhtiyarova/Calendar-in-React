@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
-const Event = (events, handleDelete) => {
+const Event = (events, setEvents) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
 
-  const onDeleteEvent = () => {
-    onDeleteTask(events.id);
-    setDeleteEvent(false);
-  };
+   const onDeleteEvent = () => {
+     onDeleteTask(events.id).then(() =>
+       fetchEvents().then((data) => setEvents(data))
+     );
+     setDeleteEvent(false);
+   };
 
   return (
     <>
