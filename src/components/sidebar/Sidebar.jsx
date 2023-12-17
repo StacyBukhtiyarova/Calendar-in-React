@@ -6,11 +6,7 @@ const Sidebar = (props) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => {
-      if ((index += 5) && index < 24) {
-        return index + 1;
-      } else {
-        return (index -= 23);
-      }
+      return index;
     });
 
   return (
