@@ -1,6 +1,6 @@
 # Calendar
 
-[site link] (https://react-calendar-stack.netlify.app)
+[site link](https://react-calendar-stack.netlify.app)
 
 Tech Stack: 
 
