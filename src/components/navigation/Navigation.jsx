@@ -1,7 +1,7 @@
 import React from 'react';
 import './navigation.scss';
 import { days } from '../../utils/dateUtils.js';
-
+import PropTypes from 'prop-types';
 const Navigation = ({ weekDates }) => {
   const today = new Date();
 
@@ -9,6 +9,7 @@ const Navigation = ({ weekDates }) => {
     <header className="calendar__header">
       {weekDates.map((dayDate) => (
         <div
+          key={dayDate}
           className={`calendar__day-label day-label ${
             isCurrentDay(dayDate) ? 'calendar__week-date' : ''
           }`}>
@@ -38,3 +39,6 @@ const Navigation = ({ weekDates }) => {
 };
 
 export default Navigation;
+Navigation.propTypes = {
+  weekDates: PropTypes.array,
+};

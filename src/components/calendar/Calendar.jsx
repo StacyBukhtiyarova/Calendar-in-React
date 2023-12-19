@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Navigation from './../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
@@ -19,3 +19,8 @@ const Calendar = ({ weekDates, events, setEvents }) => {
 };
 
 export default Calendar;
+Calendar.propTypes = {
+  weekDates: PropTypes.array,
+  events: PropTypes.array,
+  setEvents: PropTypes.func,
+};

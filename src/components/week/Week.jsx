@@ -1,5 +1,6 @@
 import React from 'react';
 import Day from '../day/Day';
+import PropTypes from 'prop-types';
 import './week.scss';
 import { fetchEvents } from '../../gateway/events';
 
@@ -30,3 +31,8 @@ const Week = ({ weekDates, events, setEvents }) => {
 };
 
 export default Week;
+Week.propTypes = {
+  weekDates: PropTypes.array,
+  events: PropTypes.array,
+  setEvents: PropTypes.func,
+};

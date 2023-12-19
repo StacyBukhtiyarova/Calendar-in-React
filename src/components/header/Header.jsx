@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './header.scss';
 const Header = ({
   switchNextWeek,
@@ -40,3 +41,10 @@ const Header = ({
   );
 };
 export default Header;
+Header.propTypes = {
+  switchNextWeek: PropTypes.func,
+  switchPrevWeek: PropTypes.func,
+  currentWeek: PropTypes.func,
+  weekDates: PropTypes.array,
+  openModalWindow: PropTypes.func,
+};

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, Component } from 'react';
-import events, { fetchEvents } from '../../gateway/events';
+import PropTypes from 'prop-types';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
-
 const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
@@ -62,3 +61,9 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
 };
 
 export default Modal;
+Modal.propTypes = {
+  openModalWindow: PropTypes.bool,
+  hideModalWindow: PropTypes.func,
+  setEvents: PropTypes.func,
+  events: PropTypes.array,
+};

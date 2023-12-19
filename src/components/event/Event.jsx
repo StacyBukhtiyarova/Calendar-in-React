@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
 const Event = ({ id, time, title, description, setEvents }) => {
@@ -8,7 +9,6 @@ const Event = ({ id, time, title, description, setEvents }) => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
     setDeleteEvent(false);
   };
-
   return (
     <>
       <div onClick={() => setDeleteEvent(true)}>{title}</div>
@@ -42,3 +42,10 @@ const Event = ({ id, time, title, description, setEvents }) => {
   );
 };
 export default Event;
+Event.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  time: PropTypes.instanceOf(Date),
+  setEvents: PropTypes.func,
+};

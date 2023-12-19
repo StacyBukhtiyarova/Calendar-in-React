@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Hour from '../hour/Hour';
 import { fetchEvents } from '../../gateway/events';
 import './day.scss';
 
-const Day = ({ dataDay, dayEvents, setEvents}) => {
+const Day = ({ dataDay, dayEvents, setEvents }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -17,7 +18,12 @@ const Day = ({ dataDay, dayEvents, setEvents}) => {
         );
 
         return (
-          <Hour key={dataDay + hour} dataHour={hour} hourEvents={hourEvents} setEvents={setEvents} />
+          <Hour
+            key={dataDay + hour}
+            dataHour={hour}
+            hourEvents={hourEvents}
+            setEvents={setEvents}
+          />
         );
       })}
     </div>
@@ -25,3 +31,8 @@ const Day = ({ dataDay, dayEvents, setEvents}) => {
 };
 
 export default Day;
+Day.propTypes = {
+  dataDay: PropTypes.number,
+  dayEvents: PropTypes.array,
+  setEvents: PropTypes.func,
+};
