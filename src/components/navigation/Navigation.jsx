@@ -1,9 +1,17 @@
 import React from 'react';
 import './navigation.scss';
-import { days } from '../../utils/dateUtils.js';
 import PropTypes from 'prop-types';
+import { days } from '../../utils/dateUtils';
+
 const Navigation = ({ weekDates }) => {
   const today = new Date();
+  function isCurrentDay(date) {
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  }
   return (
     <header className="calendar__header">
       {weekDates.map((dayDate) => (
@@ -28,13 +36,6 @@ const Navigation = ({ weekDates }) => {
       ))}
     </header>
   );
-  function isCurrentDay(date) {
-    return (
-      date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getFullYear() === today.getFullYear()
-    );
-  }
 };
 
 export default Navigation;

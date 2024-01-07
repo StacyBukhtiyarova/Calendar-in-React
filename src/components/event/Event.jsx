@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
+
 const Event = ({ id, time, title, description, setEvents }) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
 

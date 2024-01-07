@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
+
 const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
@@ -13,10 +14,12 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
       id: Math.floor(Math.random() * 1000) + 1,
       title: formData.get('title'),
       description: formData.get('description'),
-      dateFrom: new Date(
-        formData.get('date') + 'T' + formData.get('startTime')
-      ),
-      dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
+      dateFrom: `new Date(
+        ${formData.get('date')} ${'T'} ${formData.get('startTime')}
+      )`,
+      dateTo: `new Date(${formData.get('date')} ${'T'} ${formData.get(
+        'endTime'
+      )})`,
     };
     hideModalWindow();
     onCreateTask(newEvent).then(() => setEvents(events.concat(newEvent)));

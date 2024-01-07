@@ -29,7 +29,6 @@ export const onCreateTask = (taskInfo) =>
     })
     .catch(() => {
       alert("Network Error! Can't create event.");
-      return;
     });
 export const onDeleteTask = (id) =>
   fetch(`${baseUrl}/${id}`, {

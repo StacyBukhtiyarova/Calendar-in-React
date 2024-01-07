@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/header/Header.jsx';
-import Calendar from './components/calendar/Calendar.jsx';
-import Modal from './components/modal/Modal.jsx';
-import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
+import Header from './components/header/Header';
+import Calendar from './components/calendar/Calendar';
+import Modal from './components/modal/Modal';
+import { getWeekStartDate, generateWeekRange } from './utils/dateUtils';
 import './common.scss';
 import { fetchEvents } from './gateway/events';
 

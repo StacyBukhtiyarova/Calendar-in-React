@@ -20,7 +20,13 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    "import/extensions": 0,
+
+  "prettier/prettier": ["error", {
+    "endOfLine": "auto",
+    "arrow-body-style": 0,
+    "import/no-useless-path-segments": 0
+   }],
+   "import/extensions": 0,
     "no-console": 0,
     "no-alert": 0,
     "no-unused-vars": 0,
@@ -29,8 +35,9 @@ module.exports = {
     "global-require": 0,
     "class-methods-use-this": 0,
     "import/no-extraneous-dependencies": 0,
-    "arrow-body-style": 1,
+    "arrow-body-style": 0,
     "prefer-arrow-callback": 1,
+   
   },
   settings: {
     "import/resolver": {

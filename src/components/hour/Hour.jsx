@@ -1,8 +1,8 @@
-import Event from '../event/Event';
-import PropTypes from 'prop-types';
-import { formatMins } from '../../../src/utils/dateUtils.js';
-import { onDeleteTask } from '../../gateway/events';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Event from '../event/Event';
+import { formatMins } from '../../utils/dateUtils.js';
+import { onDeleteTask } from '../../gateway/events';
 
 const Hour = ({ dataHour, hourEvents, setEvents }) => {
   const res = hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
@@ -17,7 +17,7 @@ const Hour = ({ dataHour, hourEvents, setEvents }) => {
         setEvents={setEvents}
         onClick={() => onDeleteTask(id)}
         key={id}
-        //calculating event height = duration of event in minutes
+        // calculating event height = duration of event in minutes
         height={
           (new Date(dateTo).getTime() - new Date(dateFrom).getTime()) /
           (1000 * 60)
