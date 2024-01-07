@@ -4,7 +4,6 @@ import { days } from '../../utils/dateUtils.js';
 import PropTypes from 'prop-types';
 const Navigation = ({ weekDates }) => {
   const today = new Date();
-
   return (
     <header className="calendar__header">
       {weekDates.map((dayDate) => (

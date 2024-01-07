@@ -1,6 +1,6 @@
 export const baseUrl =
   'https://649333cf428c3d2035d17deb.mockapi.io/api/v1/events';
-const events = []
+const events = [];
 export const fetchEvents = () =>
   fetch(baseUrl)
     .then((res) => {

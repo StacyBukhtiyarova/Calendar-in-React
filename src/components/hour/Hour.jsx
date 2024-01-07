@@ -1,8 +1,8 @@
 import Event from '../event/Event';
 import PropTypes from 'prop-types';
 import { formatMins } from '../../../src/utils/dateUtils.js';
-import { onDeleteTask, fetchEvents } from '../../gateway/events';
-import React, { useState, useEffect } from 'react';
+import { onDeleteTask } from '../../gateway/events';
+import React from 'react';
 
 const Hour = ({ dataHour, hourEvents, setEvents }) => {
   const res = hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
@@ -32,7 +32,9 @@ const Hour = ({ dataHour, hourEvents, setEvents }) => {
   });
 
   return (
-    <div className="calendar__time-slot" data-time={dataHour + 1}>
+    <div
+      className="calendar__time-slot"
+      data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}
       {res}
     </div>

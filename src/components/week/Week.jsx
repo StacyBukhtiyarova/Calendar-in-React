@@ -2,7 +2,6 @@ import React from 'react';
 import Day from '../day/Day';
 import PropTypes from 'prop-types';
 import './week.scss';
-import { fetchEvents } from '../../gateway/events';
 
 const Week = ({ weekDates, events, setEvents }) => {
   return (

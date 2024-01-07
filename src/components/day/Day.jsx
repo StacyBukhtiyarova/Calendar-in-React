@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Hour from '../hour/Hour';
-import { fetchEvents } from '../../gateway/events';
-import './day.scss';
 
 const Day = ({ dataDay, dayEvents, setEvents }) => {
   const hours = Array(24)
@@ -10,13 +8,14 @@ const Day = ({ dataDay, dayEvents, setEvents }) => {
     .map((val, index) => index);
 
   return (
-    <div className="calendar__day" data-day={dataDay}>
+    <div
+      className="calendar__day"
+      data-day={dataDay}>
       {hours.map((hour) => {
         //getting all events from the day we will render
         const hourEvents = dayEvents.filter(
           (event) => new Date(event.dateFrom).getHours() === hour
         );
-
         return (
           <Hour
             key={dataDay + hour}

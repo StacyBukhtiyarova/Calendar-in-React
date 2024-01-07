@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
@@ -6,7 +6,6 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
   }
-
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
@@ -26,10 +25,14 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
     <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
-          <button className="create-event__close-btn" onClick={hideModalWindow}>
+          <button
+            className="create-event__close-btn"
+            onClick={hideModalWindow}>
             +
           </button>
-          <form className="event-form" onSubmit={createEvent}>
+          <form
+            className="event-form"
+            onSubmit={createEvent}>
             <input
               type="text"
               name="title"
@@ -37,20 +40,30 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
               className="event-form__field"
             />
             <div className="event-form__time">
-              <input type="date" name="date" className="event-form__field" />
+              <input
+                type="date"
+                name="date"
+                className="event-form__field"
+              />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
               />
               <span>-</span>
-              <input type="time" name="endTime" className="event-form__field" />
+              <input
+                type="time"
+                name="endTime"
+                className="event-form__field"
+              />
             </div>
             <textarea
               name="description"
               placeholder="Description"
               className="event-form__field"></textarea>
-            <button type="submit" className="event-form__submit-btn">
+            <button
+              type="submit"
+              className="event-form__submit-btn">
               Create
             </button>
           </form>

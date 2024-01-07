@@ -14,11 +14,15 @@ const Header = ({
   const month = [...new Set(weekDatesMonth)];
   return (
     <header className="header">
-      <button className="button create-event-btn" onClick={openModalWindow}>
+      <button
+        className="button create-event-btn"
+        onClick={openModalWindow}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">
-        <button className="navigation__today-btn button" onClick={currentWeek}>
+        <button
+          className="navigation__today-btn button"
+          onClick={currentWeek}>
           Today
         </button>
         <button
