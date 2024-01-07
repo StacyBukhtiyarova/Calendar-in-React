@@ -1,25 +1,27 @@
-# Calendar
+# Project: Google Calendar
 
 [site link](https://react-calendar-stack.netlify.app)
 
-Tech Stack: 
+Simple Google Calendar on React.
 
-HTML5 
+Tech Stack used: 
 
-CSS3 
+* HTML5 
 
-Preprocessor Scss 
+* CSS3 
 
-Flexbox 
+* Preprocessor Scss 
 
-BEM methodology. 
+* Flexbox 
 
-JS 
+* BEM methodology. 
 
-React 
+* JS 
 
-React-DOM 
+* React 
 
-React-hooks 
+* React-DOM 
+
+* React-hooks 
 
 Author: Anastasiya Bukhtiyarova
