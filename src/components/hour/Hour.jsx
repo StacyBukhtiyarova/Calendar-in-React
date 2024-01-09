@@ -33,7 +33,9 @@ const Hour = ({ dataHour, hourEvents, setEvents }) => {
 
   return (
     <div
-      className="calendar__time-slot"
+      className={`calendar__time-slot ${
+        hourEvents.length > 0 ? 'calendar__events-time-slot' : ''
+      }`}
       data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}
       {res}

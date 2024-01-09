@@ -1,12 +1,12 @@
 header {
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 10vh;
   background-color: rgba(253, 240, 219, 0.223);
 }
 
 .create-event-btn {
-  margin: 0 10px 0 0;
   &__icon {
     margin: 0 5px 0 0;
   }

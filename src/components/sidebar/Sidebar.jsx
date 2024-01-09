@@ -3,9 +3,10 @@ import React from 'react';
 import './sidebar.scss';
 
 const Sidebar = (props) => {
-  const hours = Array(24)
+  const hours = Array(25)
     .fill()
     .map((val, index) => {
+      console.log(index);
       return index;
     });
 
