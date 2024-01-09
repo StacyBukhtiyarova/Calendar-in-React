@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/header/Header';
-import Calendar from './components/calendar/Calendar';
-import Modal from './components/modal/Modal';
-import { getWeekStartDate, generateWeekRange } from './utils/dateUtils';
+import Header from './components/header/Header.jsx';
+import Calendar from './components/calendar/Calendar.jsx';
+import Modal from './components/modal/Modal.jsx';
+import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
+
 import './common.scss';
 import { fetchEvents } from './gateway/events';
 
@@ -22,15 +23,15 @@ const App = () => {
   );
   const [openModalWindow, setModalWindow] = useState(false);
   const switchNextWeek = () => {
-    const newWeeks = weekDates.map(
-      (day) => new Date(new Date(day).getTime() + 604800000)
-    );
+    const newWeeks = weekDates.map((day) => {
+      return new Date(new Date(day).getTime() + 604800000);
+    });
     setWeekDates(newWeeks);
   };
   const switchPrevWeek = () => {
-    const newWeeks = weekDates.map(
-      (day) => new Date(new Date(day).getTime() - 604800000)
-    );
+    const newWeeks = weekDates.map((day) => {
+      return new Date(new Date(day).getTime() - 604800000);
+    });
     setWeekDates(newWeeks);
   };
   const currentWeek = () => {

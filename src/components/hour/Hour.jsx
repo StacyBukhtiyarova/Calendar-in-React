@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Event from '../event/Event';
-import { formatMins } from '../../utils/dateUtils.js';
+import { formatMins } from '../../utils/dateUtils';
 import { onDeleteTask } from '../../gateway/events';
 
 const Hour = ({ dataHour, hourEvents, setEvents }) => {
@@ -42,6 +42,7 @@ const Hour = ({ dataHour, hourEvents, setEvents }) => {
 };
 
 export default Hour;
+
 Hour.propTypes = {
   dataHour: PropTypes.number,
   hourEvents: PropTypes.array,

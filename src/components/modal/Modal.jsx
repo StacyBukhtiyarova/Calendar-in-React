@@ -7,6 +7,7 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
   }
+
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
@@ -14,12 +15,10 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
       id: Math.floor(Math.random() * 1000) + 1,
       title: formData.get('title'),
       description: formData.get('description'),
-      dateFrom: `new Date(
-        ${formData.get('date')} ${'T'} ${formData.get('startTime')}
-      )`,
-      dateTo: `new Date(${formData.get('date')} ${'T'} ${formData.get(
-        'endTime'
-      )})`,
+      dateFrom: new Date(
+        formData.get('date') + 'T' + formData.get('startTime')
+      ),
+      dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
     };
     hideModalWindow();
     onCreateTask(newEvent).then(() => setEvents(events.concat(newEvent)));

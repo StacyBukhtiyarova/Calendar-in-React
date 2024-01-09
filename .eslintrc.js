@@ -37,7 +37,7 @@ module.exports = {
     "import/no-extraneous-dependencies": 0,
     "arrow-body-style": 0,
     "prefer-arrow-callback": 1,
-   
+   "prefer-template": 0,
   },
   settings: {
     "import/resolver": {

@@ -10,6 +10,7 @@ const Event = ({ id, time, title, description, setEvents }) => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
     setDeleteEvent(false);
   };
+
   return (
     <>
       <div onClick={() => setDeleteEvent(true)}>{title}</div>
@@ -44,9 +45,8 @@ const Event = ({ id, time, title, description, setEvents }) => {
 };
 export default Event;
 Event.propTypes = {
-  id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
-  time: PropTypes.instanceOf(Date),
+  time: PropTypes.string,
   setEvents: PropTypes.func,
 };

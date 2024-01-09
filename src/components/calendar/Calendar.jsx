@@ -22,6 +22,7 @@ const Calendar = ({ weekDates, events, setEvents }) => {
     </section>
   );
 };
+
 export default Calendar;
 Calendar.propTypes = {
   weekDates: PropTypes.array,
