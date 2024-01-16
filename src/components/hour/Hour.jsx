@@ -46,7 +46,7 @@ const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
       <span
         className={`${
           dataDay === new Date().getDate() && dataHour === new Date().getHours()
-            ? 'calendar__current-time-slot'
+            ? 'red-line'
             : ''
         }`}>
         
