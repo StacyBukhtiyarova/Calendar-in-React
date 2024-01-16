@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Day from '../day/Day';
 import './week.scss';
-import { days } from '../../utils/dateUtils';
+
 
 const Week = ({ weekDates, events, setEvents }) => {
   return (

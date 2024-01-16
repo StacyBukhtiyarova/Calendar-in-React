@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Hour from '../hour/Hour';
 
-const Day = ({ dataDay, dayEvents, setEvents, weekDates, time }) => {
+const Day = ({ dataDay, dayEvents, setEvents }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
@@ -22,7 +22,6 @@ const Day = ({ dataDay, dayEvents, setEvents, weekDates, time }) => {
               <Hour
                 dataDay={dataDay}
                 dataHour={hour}
-                weekDates={weekDates}
                 key={dataDay + hour}
                 hourEvents={hourEvents}
                 setEvents={setEvents}
@@ -41,13 +40,3 @@ Day.propTypes = {
   dayEvents: PropTypes.array,
   setEvents: PropTypes.func,
 };
-//  currentDay && hour === new Date().getHours() && (
-//    <span
-//      className={`${
-//        currentDay && hour === new Date().getHours()
-//          ? 'calendar__current-time-slot'
-//          : ''
-//      }`}>
-//      -
-//    </span>
-//  );

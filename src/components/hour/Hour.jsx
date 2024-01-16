@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Event from '../event/Event';
-import { formatMins, days } from '../../utils/dateUtils.js';
+import { formatMins } from '../../utils/dateUtils.js';
 import { onDeleteTask } from '../../gateway/events';
 
 const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
@@ -48,9 +48,7 @@ const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
           dataDay === new Date().getDate() && dataHour === new Date().getHours()
             ? 'red-line'
             : ''
-        }`}>
-        
-      </span>
+        }`}></span>
     </div>
   );
 };
