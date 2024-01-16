@@ -21,6 +21,7 @@ const App = () => {
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(new Date()))
   );
+
   const [openModalWindow, setModalWindow] = useState(false);
   const switchNextWeek = () => {
     const newWeeks = weekDates.map((day) => {

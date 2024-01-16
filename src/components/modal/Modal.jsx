@@ -7,7 +7,6 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
   if (openModalWindow) {
     return null;
   }
-
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));

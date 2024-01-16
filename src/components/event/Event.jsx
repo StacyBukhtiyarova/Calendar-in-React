@@ -10,7 +10,6 @@ const Event = ({ id, time, title, description, setEvents }) => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
     setDeleteEvent(false);
   };
-
   return (
     <>
       <div onClick={() => setDeleteEvent(true)}>{title}</div>

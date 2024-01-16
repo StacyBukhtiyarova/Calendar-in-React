@@ -5,7 +5,7 @@ import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 import './calendar.scss';
 
-const Calendar = ({ weekDates, events, setEvents }) => {
+const Calendar = ({ weekDates, events, setEvents, dataHour, dataDay }) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
@@ -16,13 +16,14 @@ const Calendar = ({ weekDates, events, setEvents }) => {
             weekDates={weekDates}
             events={events}
             setEvents={setEvents}
+            dataHour={dataHour}
+            dataDay={dataDay}
           />
         </div>
       </div>
     </section>
   );
 };
-
 export default Calendar;
 Calendar.propTypes = {
   weekDates: PropTypes.array,

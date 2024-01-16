@@ -1,0 +1,48 @@
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(204, 204, 204, 0.2705882353);
+  z-index: 10;
+}
+
+.delete-event {
+  display: flex;
+  flex-direction: column;
+}
+.delete-event__close-btn {
+  margin-left: auto;
+  transform: rotate(45deg) scale(2);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+}
+
+.event-modal {
+  text-align: center;
+  min-width: 30vh;
+  line-height: 7vh;
+  display: flex;
+  flex-direction: column;
+}
+.event-modal__delete-btn {
+  margin: 8px;
+  border: none;
+  color: #fff;
+  background-color: cornflowerblue;
+  padding: 8px 16px;
+  border-radius: 8px;
+}/*# sourceMappingURL=event.css.map */

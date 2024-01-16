@@ -27,13 +27,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &__content {
-    background: #fff;
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
+}
+.modal__content {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .overlay {
@@ -42,20 +41,18 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #cccccc45;
+  background-color: rgba(204, 204, 204, 0.2705882353);
   z-index: 10;
 }
 
-.popup {
-  &__content {
-    position: absolute;
-    background: #fff;
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
+.popup__content {
+  position: absolute;
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .hidden {
   display: none;
-}
+}/*# sourceMappingURL=common.css.map */
