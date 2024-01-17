@@ -4,7 +4,7 @@
 
 Layout support desktop (up-to-1920) version.
 
-Tech Stack used:
+### The tech stack is:
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
