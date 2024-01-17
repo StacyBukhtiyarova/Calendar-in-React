@@ -1,27 +1,27 @@
-# Project: Google Calendar
+# Project: React Calendar
 
 [site link](https://react-calendar-stack.netlify.app)
 
-Simple Google Calendar on React.
+Layout support desktop (up-to-1920) version.
 
-Tech Stack used: 
+Tech Stack used:
 
-* HTML5 
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
 
-* CSS3 
+- [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 
-* Preprocessor Scss 
+- [Sass (Scss)](https://sass-lang.com/)
 
-* Flexbox 
+- [Flexbox](https://en.wikipedia.org/wiki/CSS_Flexible_Box_Layout)
 
-* BEM methodology. 
+- [BEM methodology](https://en.bem.info/methodology/)
 
-* JS 
+- [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 
-* React 
+- [React](<https://en.wikipedia.org/wiki/React_(software)>)
 
-* React-DOM 
+- [Webpack](https://en.wikipedia.org/wiki/Webpack)
 
-* React-hooks 
+### Author
 
-Author: Anastasiya Bukhtiyarova
+- Anastasiya Bukhtiyarova

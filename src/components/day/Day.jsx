@@ -13,9 +13,10 @@ const Day = ({ dataDay, dayEvents, setEvents }) => {
       data-day={dataDay}>
       {hours.map((hour) => {
         // getting all events from the day we will render
-        const hourEvents = dayEvents.filter(
-          (event) => new Date(event.dateFrom).getHours() === hour
-        );
+        const hourEvents = dayEvents.filter((event) => {
+          return new Date(event.dateFrom).getHours() === hour;
+        });
+
         return (
           <>
             <div>

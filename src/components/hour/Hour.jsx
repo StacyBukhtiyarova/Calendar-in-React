@@ -4,8 +4,8 @@ import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
 import { onDeleteTask } from '../../gateway/events';
 
-const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
-  const res = hourEvents.map(({ id, dateFrom, dateTo, title, description }) => {
+const Hour = ({ dataDay, dataHour, hourEvents, setEvents }) => {
+  const res = hourEvents.map(({ id, dateTo, dateFrom, title, description }) => {
     const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
       new Date(dateFrom).getMinutes()
     )}`;
@@ -16,7 +16,6 @@ const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
     return (
       <>
         <Event
-          weekDates={weekDates}
           setEvents={setEvents}
           onClick={() => onDeleteTask(id)}
           key={id}
@@ -26,7 +25,7 @@ const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
             (1000 * 60)
           }
           description={description}
-          marginTop={new Date(dateFrom).getMinutes()}
+          marginTop={new Date().getMinutes()}
           time={`${eventStart} - ${eventEnd}`}
           title={title}
           id={id}
@@ -34,7 +33,10 @@ const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
       </>
     );
   });
-
+  const currentTimeMinutes = new Date().getMinutes();
+  console.log();
+  const now =
+    dataDay === new Date().getDate() && dataHour === new Date().getHours();
   return (
     <div
       className={`calendar__time-slot ${
@@ -44,10 +46,9 @@ const Hour = ({ dataDay, dataHour, hourEvents, setEvents, weekDates }) => {
       {/* if no events in the current hour nothing will render here */}
       {res}
       <span
+        style={{ marginTop: currentTimeMinutes - 59 }}
         className={`${
-          dataDay === new Date().getDate() && dataHour === new Date().getHours()
-            ? 'red-line'
-            : ''
+          now && new Date().getMinutes() ? 'red-line' : ''
         }`}></span>
     </div>
   );

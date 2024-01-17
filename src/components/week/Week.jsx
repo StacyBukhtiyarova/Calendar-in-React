@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Day from '../day/Day';
 import './week.scss';
 
-
 const Week = ({ weekDates, events, setEvents }) => {
   return (
     <div className="calendar__week">
