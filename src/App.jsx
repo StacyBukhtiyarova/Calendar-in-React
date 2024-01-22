@@ -17,11 +17,10 @@ const App = () => {
       description: '',
     },
   ]);
-
+  const [openDeleteEvent, setDeleteEvent] = useState(false);
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(new Date()))
   );
-
   const [openModalWindow, setModalWindow] = useState(false);
   const switchNextWeek = () => {
     const newWeeks = weekDates.map((day) => {
@@ -66,15 +65,18 @@ const App = () => {
         currentWeek={currentWeek}
       />
       <Modal
+        setDeleteEvent={setDeleteEvent}
         events={events}
         setEvents={setEvents}
         openModalWindow={!openModalWindow}
         hideModalWindow={hideModalWindow}
       />
       <Calendar
+        setDeleteEvent={setDeleteEvent}
         weekDates={weekDates}
         events={events}
         setEvents={setEvents}
+        openDeleteEvent={openDeleteEvent}
       />
     </>
   );

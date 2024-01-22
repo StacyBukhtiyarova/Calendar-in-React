@@ -5,7 +5,13 @@ import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 import './calendar.scss';
 
-const Calendar = ({ weekDates, events, setEvents }) => {
+const Calendar = ({
+  weekDates,
+  events,
+  setEvents,
+  openDeleteEvent,
+  setDeleteEvent,
+}) => {
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
@@ -13,6 +19,8 @@ const Calendar = ({ weekDates, events, setEvents }) => {
         <div className="calendar__week-container">
           <Sidebar />
           <Week
+            setDeleteEvent={setDeleteEvent}
+            openDeleteEvent={openDeleteEvent}
             weekDates={weekDates}
             events={events}
             setEvents={setEvents}

@@ -3,42 +3,55 @@ import PropTypes from 'prop-types';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
 
-const Event = ({ id, time, title, description, setEvents }) => {
+const Event = ({
+  id,
+  time,
+  title,
+  description,
+  setEvents,
+  // openDeleteEvent,
+  // setDeleteEvent,
+}) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
   const onDeleteEvent = () => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
     setDeleteEvent(false);
   };
-
   return (
     <>
-      <div onClick={() => setDeleteEvent(true)}>{title}</div>
-      <div>
-        {openDeleteEvent && (
+      <button
+        className="delete-event__open-modal-btn"
+        onClick={() => setDeleteEvent(true)}>
+        +
+      </button>
+      <div className="events__time-slot">
+        <span className="displayed-event__title">{title}</span>
+        <span className="displayed-event__time">{time}</span>
+      </div>
+      {openDeleteEvent && (
+        <div>
           <div className="modal overlay">
             <div className="modal__content">
-              {openDeleteEvent && (
-                <div className="event-modal">
-                  <button
-                    onClick={() => setDeleteEvent(false)}
-                    className="delete-event__close-btn">
-                    +
-                  </button>
-                  <span>{title}</span>
-                  <span>{time}</span>
-                  <span>{description}</span>
-                  <button
-                    type="submit"
-                    className="event-modal__delete-btn"
-                    onClick={onDeleteEvent}>
-                    Delete
-                  </button>
-                </div>
-              )}
+              <div className="event-modal">
+                <button
+                  onClick={() => setDeleteEvent(false)}
+                  className="delete-event__close-btn">
+                  +
+                </button>
+                <span>{title}</span>
+                <span>{time}</span>
+                <span>{description}</span>
+                <button
+                  type="submit"
+                  className="event-modal__delete-btn"
+                  onClick={onDeleteEvent}>
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}{' '}
     </>
   );
 };

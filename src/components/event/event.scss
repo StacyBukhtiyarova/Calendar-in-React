@@ -1,9 +1,16 @@
+.events__time-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  height: 60px;
+}
+
 .modal {
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 .overlay {
   position: fixed;
@@ -30,7 +37,20 @@
     height: 24px;
     background: transparent;
   }
+  &__open-modal-btn {
+    display: flex;
+    margin-left: auto;
+    transform: rotate(45deg) scale(1);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    background: transparent;
+  }
 }
+
 .event-modal {
   text-align: center;
   min-width: 30vh;
