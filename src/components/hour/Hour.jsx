@@ -41,9 +41,10 @@ const Hour = ({
     );
   });
   const currentTimeMinutes = new Date().getMinutes();
-  console.log();
+
   const now =
     dataDay === new Date().getDate() && dataHour === new Date().getHours() + 1;
+
   return (
     <div
       className={`calendar__time-slot ${
@@ -53,7 +54,7 @@ const Hour = ({
       {/* if no events in the current hour nothing will render here */}
       {res}
       <span
-        style={{ marginTop: currentTimeMinutes - 59 }}
+        style={{ marginTop: 59 - currentTimeMinutes }}
         className={`${
           now && new Date().getMinutes() ? 'red-line' : ''
         }`}></span>
