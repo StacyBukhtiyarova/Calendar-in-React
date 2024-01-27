@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  background-color: rgba(253, 240, 219, 0.223);
+}
+
+.create-event-btn__icon {
+  margin: 0 5px 0 0;
+}/*# sourceMappingURL=header.css.map */

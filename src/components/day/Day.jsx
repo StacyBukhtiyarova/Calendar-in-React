@@ -8,6 +8,8 @@ const Day = ({
   setEvents,
   openDeleteEvent,
   setDeleteEvent,
+  weekDates,
+  events,
 }) => {
   const hours = Array(24)
     .fill()
@@ -34,6 +36,8 @@ const Day = ({
                 key={dataDay + hour}
                 hourEvents={hourEvents}
                 setEvents={setEvents}
+                weekDates={weekDates}
+                events={events}
               />
             </div>
           </>

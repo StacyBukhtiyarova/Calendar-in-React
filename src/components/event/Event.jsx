@@ -3,20 +3,13 @@ import PropTypes from 'prop-types';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
 
-const Event = ({
-  id,
-  time,
-  title,
-  description,
-  setEvents,
-  // openDeleteEvent,
-  // setDeleteEvent,
-}) => {
+const Event = ({ id, time, title, description, setEvents }) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
   const onDeleteEvent = () => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
     setDeleteEvent(false);
   };
+  console.log(time);
   return (
     <>
       <button

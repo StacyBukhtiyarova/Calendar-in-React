@@ -35,6 +35,7 @@ const Week = ({
             dayEvents={dayEvents}
             setEvents={setEvents}
             dataHour={dayStart.getHours()}
+            events={events}
           />
         );
       })}

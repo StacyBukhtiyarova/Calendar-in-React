@@ -1,0 +1,58 @@
+.button {
+  margin: 0 10px 0 10px;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(247, 130, 4);
+  background-color: rgb(253, 221, 187);
+  border: 1px solid rgba(253, 233, 196, 0.455);
+}
+
+.icon-button {
+  padding: 0 30px 0 0;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: rgb(247, 130, 4);
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__content {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(204, 204, 204, 0.2705882353);
+  z-index: 10;
+}
+
+.popup__content {
+  position: absolute;
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none;
+}/*# sourceMappingURL=common.css.map */

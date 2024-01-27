@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Event from '../event/Event';
 import { formatMins } from '../../utils/dateUtils.js';
-import { onDeleteTask } from '../../gateway/events';
+import { isCurrentDay } from '../navigation/Navigation.jsx';
+import { onDeleteTask } from '../../gateway/events.js';
 
 const Hour = ({
   openDeleteEvent,
@@ -11,6 +12,8 @@ const Hour = ({
   dataHour,
   hourEvents,
   setEvents,
+  weekDates,
+  events,
 }) => {
   const res = hourEvents.map(({ id, dateTo, dateFrom, title, description }) => {
     const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
@@ -20,6 +23,7 @@ const Hour = ({
       new Date(dateTo).getMinutes()
     )}`;
 
+    // console.log(events.map((item) => console.log(item)));
     return (
       <Event
         setDeleteEvent={setDeleteEvent}
@@ -37,27 +41,40 @@ const Hour = ({
         time={`${eventStart} - ${eventEnd}`}
         title={title}
         id={id}
+        dateFrom={dateFrom}
+        weekDates={weekDates}
+        events={events}
       />
     );
   });
   const currentTimeMinutes = new Date().getMinutes();
-
+  const weekDatesCurrentMonth = weekDates.map((el) =>
+    el.toLocaleString('en', { month: 'short' })
+  );
+  const month = [...new Set(weekDatesCurrentMonth)];
+  const weekDatesCurrentYear = weekDates.map((el) => el.getFullYear());
+  const year = [...new Set(weekDatesCurrentYear)][0];
   const now =
-    dataDay === new Date().getDate() && dataHour === new Date().getHours() + 1;
+    dataDay === new Date().getDate() &&
+    dataHour === new Date().getHours() + 1 &&
+    month[0] === new Date().toLocaleString('en', { month: 'short' }) &&
+    year === new Date().getFullYear();
 
   return (
-    <div
-      className={`calendar__time-slot ${
-        hourEvents.length > 0 ? 'calendar__events-time-slot' : ''
-      }`}
-      data-time={dataHour + 1}>
-      {/* if no events in the current hour nothing will render here */}
-      {res}
-      <span
-        style={{ marginTop: 59 - currentTimeMinutes }}
-        className={`${
-          now && new Date().getMinutes() ? 'red-line' : ''
-        }`}></span>
+    <div>
+      <div
+        className={`calendar__time-slot ${
+          hourEvents.length > 0 ? 'calendar__events-time-slot' : ''
+        }`}
+        data-time={dataHour + 1}>
+        {/* if no events in the current hour nothing will render here */}
+        {res}
+        <span
+          style={{ marginTop: currentTimeMinutes - 59 }}
+          className={`${
+            now && year === new Date().getFullYear() ? 'red-line' : ''
+          }`}></span>
+      </div>
     </div>
   );
 };

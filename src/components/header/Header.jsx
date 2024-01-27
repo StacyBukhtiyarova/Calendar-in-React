@@ -13,6 +13,7 @@ const Header = ({
     el.toLocaleString('en', { month: 'short' })
   );
   const month = [...new Set(weekDatesMonth)];
+
   return (
     <header className="header">
       <button
