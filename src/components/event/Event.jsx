@@ -3,13 +3,25 @@ import PropTypes from 'prop-types';
 import './event.scss';
 import { fetchEvents, onDeleteTask } from '../../gateway/events';
 
-const Event = ({ id, time, title, description, setEvents }) => {
+const Event = ({
+  id,
+  time,
+  title,
+  description,
+  setEvents,
+  dateFrom,
+  dateTo,
+}) => {
   const [openDeleteEvent, setDeleteEvent] = useState(false);
   const onDeleteEvent = () => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
     setDeleteEvent(false);
   };
-  console.log(time);
+  const hourInMiliseconds = 60 * 60 * 1000; // 1000 miliseconds in one second; 60 seconds in one minute; 60 minutes in one hour
+  const durationEventMiliseconds =
+    new Date(dateTo).getTime() - new Date(dateFrom).getTime();
+  const durationEventHour = durationEventMiliseconds / hourInMiliseconds;
+
   return (
     <>
       <button
@@ -17,7 +29,12 @@ const Event = ({ id, time, title, description, setEvents }) => {
         onClick={() => setDeleteEvent(true)}>
         +
       </button>
-      <div className="events__time-slot">
+      <div
+        className="events__time-slot"
+        style={{
+          height: durationEventHour * 60,
+          backgroundColor: '#FFA60036',
+        }}>
         <span className="displayed-event__title">{title}</span>
         <span className="displayed-event__time">{time}</span>
       </div>

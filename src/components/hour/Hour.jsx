@@ -42,6 +42,7 @@ const Hour = ({
         title={title}
         id={id}
         dateFrom={dateFrom}
+        dateTo={dateTo}
         weekDates={weekDates}
         events={events}
       />

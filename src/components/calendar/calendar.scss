@@ -41,10 +41,9 @@
     position: relative;
     border-bottom: 1px solid #eee;
   }
-  &__events-time-slot {
-    background-color: rgba(250, 230, 244, 0.308);
+  &-border {
+    border-bottom: 0;
   }
-
   &__day-label {
     flex: 1;
   }
