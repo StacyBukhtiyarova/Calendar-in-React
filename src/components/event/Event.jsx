@@ -21,20 +21,22 @@ const Event = ({
   const durationEventMiliseconds =
     new Date(dateTo).getTime() - new Date(dateFrom).getTime();
   const durationEventHour = durationEventMiliseconds / hourInMiliseconds;
-
   return (
-    <>
-      <button
-        className="delete-event__open-modal-btn"
-        onClick={() => setDeleteEvent(true)}>
-        +
-      </button>
+    <div onClick={() => setDeleteEvent(!openDeleteEvent)}>
       <div
         className="events__time-slot"
         style={{
+          justifyContent: 'start',
           height: durationEventHour * 60,
           backgroundColor: '#FFA60036',
+          lineHeight: 1.5,
+          zIndex: 1,
         }}>
+        <button
+          className="delete-event__open-modal-btn"
+          onClick={() => setDeleteEvent(true)}>
+          +
+        </button>
         <span className="displayed-event__title">{title}</span>
         <span className="displayed-event__time">{time}</span>
       </div>
@@ -62,7 +64,7 @@ const Event = ({
           </div>
         </div>
       )}{' '}
-    </>
+    </div>
   );
 };
 export default Event;

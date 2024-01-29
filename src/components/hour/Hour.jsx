@@ -14,7 +14,6 @@ const Hour = ({
   setEvents,
   weekDates,
   events,
-  opeModalWindow,
 }) => {
   const res = hourEvents.map(({ id, dateTo, dateFrom, title, description }) => {
     const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
@@ -23,7 +22,6 @@ const Hour = ({
     const eventEnd = `${new Date(dateTo).getHours()}:${formatMins(
       new Date(dateTo).getMinutes()
     )}`;
-
     // console.log(events.map((item) => console.log(item)));
     return (
       <Event
@@ -65,7 +63,9 @@ const Hour = ({
   return (
     <div>
       <div
-        className="calendar__time-slot"
+        className={`calendar__time-slot ${
+          hourEvents.length > 0 ? 'calendar__events-time-slot' : ''
+        }`}
         data-time={dataHour + 1}>
         {/* if no events in the current hour nothing will render here */}
         {res}
