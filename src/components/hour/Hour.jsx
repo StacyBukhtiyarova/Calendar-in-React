@@ -15,14 +15,14 @@ const Hour = ({
   weekDates,
   events,
 }) => {
-  const res = hourEvents.map(({ id, dateTo, dateFrom, title, description }) => {
+  const res = hourEvents.map(({ id, title, dateTo, dateFrom, description }) => {
     const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
       new Date(dateFrom).getMinutes()
     )}`;
     const eventEnd = `${new Date(dateTo).getHours()}:${formatMins(
       new Date(dateTo).getMinutes()
     )}`;
-    // console.log(events.map((item) => console.log(item)));
+
     return (
       <Event
         setDeleteEvent={setDeleteEvent}
@@ -47,6 +47,7 @@ const Hour = ({
       />
     );
   });
+
   const currentTimeMinutes = new Date().getMinutes();
   const weekDatesCurrentMonth = weekDates.map((el) =>
     el.toLocaleString('en', { month: 'short' })
@@ -70,7 +71,9 @@ const Hour = ({
         {/* if no events in the current hour nothing will render here */}
         {res}
         <span
-          style={{ marginTop: currentTimeMinutes - 59 }}
+          style={{
+            marginTop: currentTimeMinutes - 59,
+          }}
           className={`${
             now && year === new Date().getFullYear() ? 'red-line' : ''
           }`}></span>

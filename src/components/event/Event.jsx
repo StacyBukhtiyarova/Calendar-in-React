@@ -28,7 +28,7 @@ const Event = ({
         style={{
           justifyContent: 'start',
           height: durationEventHour * 60,
-          backgroundColor: '#FFA60036',
+          backgroundColor: '#AE4461',
           lineHeight: 1.5,
           zIndex: 1,
         }}>

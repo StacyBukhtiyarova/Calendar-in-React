@@ -27,6 +27,10 @@ const Navigation = ({ weekDates }) => {
             {days[dayDate.getDay()]}
           </span>
           <span
+            style={{
+              backgroundColor: isCurrentDay(dayDate) ? '#AE4461' : '',
+              borderRadius: 90,
+            }}
             className={`day-label__day-number ${
               isCurrentDay(dayDate) ? 'calendar__current-date' : ''
             }`}>
