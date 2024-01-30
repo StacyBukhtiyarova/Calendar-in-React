@@ -31,6 +31,7 @@ const Event = ({
           backgroundColor: '#AE4461',
           lineHeight: 1.5,
           zIndex: 1,
+          color: 'wheat',
         }}>
         <button
           className="delete-event__open-modal-btn"
