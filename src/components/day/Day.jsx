@@ -6,41 +6,35 @@ const Day = ({
   dataDay,
   dayEvents,
   setEvents,
-  openDeleteEvent,
-  setDeleteEvent,
+  deleteEventModal,
+  setDeleteEventModal,
   weekDates,
   events,
 }) => {
   const hours = Array(24)
     .fill()
-    .map((val, index) => index);
-
+    .map((_, index) => index);
   return (
     <div
       className="calendar__day"
       data-day={dataDay}>
       {hours.map((hour) => {
-        // getting all events from the day we will render
         const hourEvents = dayEvents.filter((event) => {
           return new Date(event.dateFrom).getHours() === hour;
         });
 
         return (
-          <>
-            <div>
-              <Hour
-                setDeleteEvent={setDeleteEvent}
-                openDeleteEvent={openDeleteEvent}
-                dataDay={dataDay}
-                dataHour={hour}
-                key={dataDay + hour}
-                hourEvents={hourEvents}
-                setEvents={setEvents}
-                weekDates={weekDates}
-                events={events}
-              />
-            </div>
-          </>
+          <Hour
+            setDeleteEventModal={setDeleteEventModal}
+            deleteEventModal={deleteEventModal}
+            dataDay={dataDay}
+            dataHour={hour}
+            key={dataDay + hour}
+            hourEvents={hourEvents}
+            setEvents={setEvents}
+            weekDates={weekDates}
+            events={events}
+          />
         );
       })}
     </div>

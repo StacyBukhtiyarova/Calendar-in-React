@@ -3,47 +3,15 @@ import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Modal from './components/modal/Modal.jsx';
 import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
-
-import './common.scss';
 import { fetchEvents } from './gateway/events';
+import './common.scss';
 
 const App = () => {
-  const [events, setEvents] = useState([
-    {
-      title: '',
-      date: '',
-      startTime: '',
-      endTime: '',
-      description: '',
-    },
-  ]);
-  const [openDeleteEvent, setDeleteEvent] = useState(false);
+  const [events, setEvents] = useState([]);
   const [weekDates, setWeekDates] = useState(
     generateWeekRange(getWeekStartDate(new Date()))
   );
   const [openModalWindow, setModalWindow] = useState(false);
-  const switchNextWeek = () => {
-    const newWeeks = weekDates.map((day) => {
-      return new Date(new Date(day).getTime() + 604800000);
-    });
-    setWeekDates(newWeeks);
-  };
-  const switchPrevWeek = () => {
-    const newWeeks = weekDates.map((day) => {
-      return new Date(new Date(day).getTime() - 604800000);
-    });
-    setWeekDates(newWeeks);
-  };
-  const currentWeek = () => {
-    const currentWeekDates = generateWeekRange(getWeekStartDate(new Date()));
-    setWeekDates(currentWeekDates);
-  };
-  const hideModalWindow = () => {
-    setModalWindow(!openModalWindow);
-  };
-  const showModalWindow = () => {
-    setModalWindow(!openModalWindow);
-  };
 
   useEffect(() => {
     fetchEvents()
@@ -58,25 +26,21 @@ const App = () => {
   return (
     <>
       <Header
-        openModalWindow={showModalWindow}
         weekDates={weekDates}
-        switchNextWeek={switchNextWeek}
-        switchPrevWeek={switchPrevWeek}
-        currentWeek={currentWeek}
+        setModalWindow={setModalWindow}
       />
-      <Modal
-        setDeleteEvent={setDeleteEvent}
-        events={events}
-        setEvents={setEvents}
-        openModalWindow={!openModalWindow}
-        hideModalWindow={hideModalWindow}
-      />
+      {openModalWindow && (
+        <Modal
+          events={events}
+          setEvents={setEvents}
+          openModalWindow={openModalWindow}
+          setModalWindow={setModalWindow}
+        />
+      )}
       <Calendar
-        setDeleteEvent={setDeleteEvent}
         weekDates={weekDates}
         events={events}
         setEvents={setEvents}
-        openDeleteEvent={openDeleteEvent}
       />
     </>
   );

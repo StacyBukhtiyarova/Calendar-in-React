@@ -6,11 +6,11 @@ import Sidebar from '../sidebar/Sidebar';
 import './calendar.scss';
 
 const Calendar = ({
+  deleteEventModal,
+  setDeleteEventModal,
   weekDates,
   events,
   setEvents,
-  openDeleteEvent,
-  setDeleteEvent,
 }) => {
   return (
     <section className="calendar">
@@ -19,8 +19,8 @@ const Calendar = ({
         <div className="calendar__week-container">
           <Sidebar />
           <Week
-            setDeleteEvent={setDeleteEvent}
-            openDeleteEvent={openDeleteEvent}
+            deleteEventModal={deleteEventModal}
+            setDeleteEventModal={setDeleteEventModal}
             weekDates={weekDates}
             events={events}
             setEvents={setEvents}

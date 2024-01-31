@@ -12,17 +12,16 @@ const Event = ({
   dateFrom,
   dateTo,
 }) => {
-  const [openDeleteEvent, setDeleteEvent] = useState(false);
+  const [deleteEventModal, setDeleteEventModal] = useState(false);
+
   const onDeleteEvent = () => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
-    setDeleteEvent(false);
   };
-  const hourInMiliseconds = 60 * 60 * 1000; // 1000 miliseconds in one second; 60 seconds in one minute; 60 minutes in one hour
   const durationEventMiliseconds =
     new Date(dateTo).getTime() - new Date(dateFrom).getTime();
-  const durationEventHour = durationEventMiliseconds / hourInMiliseconds;
+  const durationEventHour = durationEventMiliseconds / (60 * 60 * 1000);
   return (
-    <div onClick={() => setDeleteEvent(!openDeleteEvent)}>
+    <div onClick={() => setDeleteEventModal(!deleteEventModal)}>
       <div
         className="events__time-slot"
         style={{
@@ -35,19 +34,19 @@ const Event = ({
         }}>
         <button
           className="delete-event__open-modal-btn"
-          onClick={() => setDeleteEvent(true)}>
+          onClick={() => setDeleteEventModal(true)}>
           +
         </button>
         <span className="displayed-event__title">{title}</span>
         <span className="displayed-event__time">{time}</span>
       </div>
-      {openDeleteEvent && (
+      {deleteEventModal && (
         <div>
           <div className="modal overlay">
             <div className="modal__content">
               <div className="event-modal">
                 <button
-                  onClick={() => setDeleteEvent(false)}
+                  onClick={() => setDeleteEventModal(false)}
                   className="delete-event__close-btn">
                   +
                 </button>

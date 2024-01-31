@@ -1,13 +1,8 @@
-.calendar {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 60px);
-
-  &__time-scale {
-    height: 100%;
-    width: 48px;
-  }
+.calendar__time-scale {
+  height: 100%;
+  width: 48px;
 }
+
 .time-slot {
   height: 60px;
   width: 48px;

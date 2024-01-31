@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
 
-const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
-  if (openModalWindow) {
-    return null;
-  }
+const Modal = ({ setModalWindow, events, setEvents }) => {
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
@@ -19,7 +16,7 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
       ),
       dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
     };
-    hideModalWindow();
+    setModalWindow(false);
     onCreateTask(newEvent).then(() => setEvents(events.concat(newEvent)));
   };
   return (
@@ -28,7 +25,7 @@ const Modal = ({ openModalWindow, hideModalWindow, events, setEvents }) => {
         <div className="create-event">
           <button
             className="create-event__close-btn"
-            onClick={hideModalWindow}>
+            onClick={() => setModalWindow(false)}>
             +
           </button>
           <form
