@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './modal.scss';
 import { onCreateTask } from '../../gateway/events';
 
-const Modal = ({ setModalWindow, events, setEvents }) => {
+const Modal = ({ events, setEvents, setModalWindow }) => {
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
@@ -73,8 +73,7 @@ const Modal = ({ setModalWindow, events, setEvents }) => {
 
 export default Modal;
 Modal.propTypes = {
-  openModalWindow: PropTypes.bool,
-  hideModalWindow: PropTypes.func,
-  setEvents: PropTypes.func,
   events: PropTypes.array,
+  setEvents: PropTypes.func,
+  setModalWindow: PropTypes.func,
 };

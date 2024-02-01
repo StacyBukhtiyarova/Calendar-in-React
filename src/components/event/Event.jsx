@@ -41,34 +41,35 @@ const Event = ({
         <span className="displayed-event__time">{time}</span>
       </div>
       {deleteEventModal && (
-        <div>
-          <div className="modal overlay">
-            <div className="modal__content">
-              <div className="event-modal">
-                <button
-                  onClick={() => setDeleteEventModal(false)}
-                  className="delete-event__close-btn">
-                  +
-                </button>
-                <span>{title}</span>
-                <span>{time}</span>
-                <span>{description}</span>
-                <button
-                  type="submit"
-                  className="event-modal__delete-btn"
-                  onClick={onDeleteEvent}>
-                  Delete
-                </button>
-              </div>
+        <div className="modal overlay">
+          <div className="modal__content">
+            <div className="event-modal">
+              <button
+                onClick={() => setDeleteEventModal(false)}
+                className="delete-event__close-btn">
+                +
+              </button>
+              <span>{title}</span>
+              <span>{time}</span>
+              <span>{description}</span>
+              <button
+                type="submit"
+                className="event-modal__delete-btn"
+                onClick={onDeleteEvent}>
+                Delete
+              </button>
             </div>
           </div>
         </div>
-      )}{' '}
+      )}
     </div>
   );
 };
 export default Event;
 Event.propTypes = {
+  id: PropTypes.string,
+  dateFrom: PropTypes.string,
+  dateTo: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   time: PropTypes.string,

@@ -4,10 +4,10 @@ import Day from '../day/Day';
 import './week.scss';
 
 const Week = ({
-  id,
   weekDates,
   events,
   setEvents,
+  id,
   deleteEventModal,
   setDeleteEventModal,
 }) => {
@@ -47,4 +47,7 @@ Week.propTypes = {
   weekDates: PropTypes.array,
   events: PropTypes.array,
   setEvents: PropTypes.func,
+  id: PropTypes.string,
+  deleteEventModal: PropTypes.bool,
+  setDeleteEventModal: PropTypes.func,
 };

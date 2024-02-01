@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './timeline.scss';
 
 const TimeLine = ({ weekDates, dataDay, dataHour }) => {
@@ -16,15 +17,18 @@ const TimeLine = ({ weekDates, dataDay, dataHour }) => {
     year === new Date().getFullYear();
 
   return (
-    <div>
-      <span
-        style={{
-          marginTop: currentTimeMinutes - 59,
-        }}
-        className={`${
-          now && year === new Date().getFullYear() ? 'red-line' : ''
-        }`}></span>
-    </div>
+    <span
+      style={{
+        marginTop: currentTimeMinutes - 59,
+      }}
+      className={`${
+        now && year === new Date().getFullYear() ? 'red-line' : ''
+      }`}></span>
   );
 };
 export default TimeLine;
+TimeLine.propTypes = {
+  weekDates: PropTypes.array,
+  dataDay: PropTypes.number,
+  dataHour: PropTypes.number,
+};

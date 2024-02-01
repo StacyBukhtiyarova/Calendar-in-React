@@ -26,6 +26,7 @@ const App = () => {
   return (
     <>
       <Header
+        setWeekDates={setWeekDates}
         weekDates={weekDates}
         setModalWindow={setModalWindow}
       />

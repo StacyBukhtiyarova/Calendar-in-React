@@ -59,9 +59,7 @@ const Header = ({ weekDates, setWeekDates, setModalWindow }) => {
 };
 export default Header;
 Header.propTypes = {
-  switchNextWeek: PropTypes.func,
-  switchPrevWeek: PropTypes.func,
-  currentWeek: PropTypes.func,
   weekDates: PropTypes.array,
+  setWeekDates: PropTypes.func,
   openModalWindow: PropTypes.func,
 };

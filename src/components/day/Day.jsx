@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Hour from '../hour/Hour';
 
 const Day = ({
-  dataDay,
-  dayEvents,
-  setEvents,
-  deleteEventModal,
-  setDeleteEventModal,
   weekDates,
   events,
+  setEvents,
+  dataDay,
+  dayEvents,
+  deleteEventModal,
+  setDeleteEventModal,
 }) => {
   const hours = Array(24)
     .fill()
@@ -43,7 +43,11 @@ const Day = ({
 
 export default Day;
 Day.propTypes = {
+  weekDates: PropTypes.array,
+  events: PropTypes.array,
+  setEvents: PropTypes.func,
   dataDay: PropTypes.number,
   dayEvents: PropTypes.array,
-  setEvents: PropTypes.func,
+  deleteEventModal: PropTypes.bool,
+  setDeleteEventModal: PropTypes.func,
 };

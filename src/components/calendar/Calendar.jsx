@@ -6,11 +6,12 @@ import Sidebar from '../sidebar/Sidebar';
 import './calendar.scss';
 
 const Calendar = ({
-  deleteEventModal,
-  setDeleteEventModal,
   weekDates,
   events,
   setEvents,
+  deleteEventModal,
+  setDeleteEventModal,
+  setModalWindow,
 }) => {
   return (
     <section className="calendar">
@@ -24,6 +25,7 @@ const Calendar = ({
             weekDates={weekDates}
             events={events}
             setEvents={setEvents}
+            setModalWindow={setModalWindow}
           />
         </div>
       </div>
@@ -35,4 +37,7 @@ Calendar.propTypes = {
   weekDates: PropTypes.array,
   events: PropTypes.array,
   setEvents: PropTypes.func,
+  deleteEventModal: PropTypes.bool,
+  setDeleteEventModal: PropTypes.func,
+  setModalWindow: PropTypes.func,
 };

@@ -5,12 +5,12 @@ import { formatMins } from '../../utils/dateUtils.js';
 import TimeLine from '../Timeline/TimeLine.jsx';
 
 const Hour = ({
+  weekDates,
+  events,
+  setEvents,
   dataDay,
   dataHour,
   hourEvents,
-  setEvents,
-  weekDates,
-  events,
   deleteEventModal,
   setDeleteEventModal,
 }) => {
@@ -65,7 +65,12 @@ const Hour = ({
 
 export default Hour;
 Hour.propTypes = {
+  weekDates: PropTypes.array,
+  events: PropTypes.array,
+  setEvents: PropTypes.func,
+  dataDay: PropTypes.number,
   dataHour: PropTypes.number,
   hourEvents: PropTypes.array,
-  setEvents: PropTypes.func,
+  deleteEventModal: PropTypes.bool,
+  setDeleteEventModal: PropTypes.func,
 };
