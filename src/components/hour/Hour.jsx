@@ -27,6 +27,7 @@ const Hour = ({
         (1000 * 60);
       return (
         <Event
+          events={events}
           setDeleteEventModal={setDeleteEventModal}
           deleteEventModal={deleteEventModal}
           setEvents={setEvents}
@@ -39,7 +40,6 @@ const Hour = ({
           dateFrom={dateFrom}
           dateTo={dateTo}
           weekDates={weekDates}
-          events={events}
         />
       );
     }

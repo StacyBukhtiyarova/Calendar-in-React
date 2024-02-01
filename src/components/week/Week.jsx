@@ -7,7 +7,6 @@ const Week = ({
   weekDates,
   events,
   setEvents,
-  id,
   deleteEventModal,
   setDeleteEventModal,
 }) => {
@@ -22,12 +21,10 @@ const Week = ({
             new Date(event.dateFrom).getTime() > new Date(dayStart.getTime()) &&
             new Date(event.dateTo).getTime() < dayEnd
         );
-
         return (
           <Day
             deleteEventModal={deleteEventModal}
             setDeleteEventModal={setDeleteEventModal}
-            id={id}
             weekDates={weekDates}
             key={dayStart.getDate()}
             dataDay={dayStart.getDate()}
@@ -47,7 +44,6 @@ Week.propTypes = {
   weekDates: PropTypes.array,
   events: PropTypes.array,
   setEvents: PropTypes.func,
-  id: PropTypes.string,
   deleteEventModal: PropTypes.bool,
   setDeleteEventModal: PropTypes.func,
 };

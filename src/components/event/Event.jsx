@@ -13,7 +13,6 @@ const Event = ({
   dateTo,
 }) => {
   const [deleteEventModal, setDeleteEventModal] = useState(false);
-
   const onDeleteEvent = () => {
     onDeleteTask(id).then(() => fetchEvents().then((data) => setEvents(data)));
   };
@@ -67,11 +66,12 @@ const Event = ({
 };
 export default Event;
 Event.propTypes = {
-  id: PropTypes.string,
-  dateFrom: PropTypes.string,
-  dateTo: PropTypes.string,
+  //id: PropTypes.number,
   title: PropTypes.string,
   description: PropTypes.string,
   time: PropTypes.string,
   setEvents: PropTypes.func,
+  events: PropTypes.array,
+  // dateFrom: PropTypes.data,
+  //dateTo: PropTypes.data,
 };
