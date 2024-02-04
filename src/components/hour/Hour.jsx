@@ -15,7 +15,10 @@ const Hour = ({
   setDeleteEventModal,
 }) => {
   const displayedData = hourEvents.map(
-    ({ id, title, dateTo, dateFrom, description }) => {
+    ({ title, id, dateFrom, dateTo, description }) => {
+      id = +id;
+      dateFrom = new Date(dateFrom);
+      dateTo = new Date(dateTo);
       const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
         new Date(dateFrom).getMinutes()
       )}`;
