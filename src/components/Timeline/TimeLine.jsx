@@ -29,7 +29,8 @@ const TimeLine = ({ weekDates, dataDay, dataHour }) => {
       }}
       className={`${
         now && year === new Date().getFullYear() ? 'red-line' : ''
-      }`}></span>
+      }`}
+    />
   );
 };
 

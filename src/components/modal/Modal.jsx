@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './modal.scss';
-import { onCreateTask } from '../../gateway/events';
+import { onCreateTask, fetchEvents } from '../../gateway/events';
 
 const Modal = ({ events, setEvents, setModalWindow }) => {
   const createEvent = (e) => {
     e.preventDefault();
     const formData = new FormData(document.querySelector('form'));
     const newEvent = {
-      id: Math.floor(Math.random() * 1000) + 1,
       title: formData.get('title'),
       description: formData.get('description'),
       dateFrom: new Date(
@@ -17,7 +16,9 @@ const Modal = ({ events, setEvents, setModalWindow }) => {
       dateTo: new Date(formData.get('date') + 'T' + formData.get('endTime')),
     };
     setModalWindow(false);
-    onCreateTask(newEvent).then(() => setEvents(events.concat(newEvent)));
+    onCreateTask(newEvent).then(() =>
+      fetchEvents().then((data) => setEvents(data))
+    );
   };
   return (
     <div className="modal overlay">
